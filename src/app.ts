@@ -35,7 +35,7 @@ app.use(session({
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
 
-// 헬스체크
+// 헬스체크 여기다가 메인에서는 이렇게 만들어볼게유
 app.get("/health", (_req, res) => res.json({ ok: true, uptime: process.uptime() }));
 
 export default app;
