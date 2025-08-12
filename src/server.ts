@@ -1,8 +1,15 @@
-import "dotenv/config";      // .env 자동 로드
-import app from "./app.js";  // ESM 해석 위해 .js 확장자처럼 적어도 tsx가 해결해줌
+import { env } from "./config/env.js";
+import { connectDB } from "./config/db.js";
+import app from "./app.js";
 
-const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
+async function main() {
+  await connectDB();
+  app.listen(env.PORT, () => {
+    console.log(`✅ Server listening on http://localhost:${env.PORT}`);
+  });
+}
 
-app.listen(PORT, () => {
-  console.log(`✅ Server listening on http://localhost:${PORT}`);
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
 });
