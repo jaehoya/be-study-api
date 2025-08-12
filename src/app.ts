@@ -35,7 +35,11 @@ app.use(session({
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
 
-// 헬스체크 여기다가 메인에서는 이렇게 만들어볼게유
+
+// 헬스체크 여기다가 뭔갈 추가하면 되는 건가>
 app.get("/health", (_req, res) => res.json({ ok: true, uptime: process.uptime() }));
+
+//로그인 기능을 만들어 볼겁니다.
+// 에러 핸들러
 
 export default app;
